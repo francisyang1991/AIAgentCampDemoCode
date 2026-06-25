@@ -20,24 +20,13 @@ cursor .
 然后在 Cursor 终端里一键安装依赖：
 
 ```bash
-# macOS / Linux
 bash setup.sh
-
-# Windows PowerShell
-.\setup.ps1
 ```
 
 安装完成后运行：
 
 ```bash
-# macOS / Linux
 source .venv/bin/activate
-python 01_hello_agent.py
-```
-
-```powershell
-# Windows PowerShell
-.\.venv\Scripts\Activate.ps1
 python 01_hello_agent.py
 ```
 
