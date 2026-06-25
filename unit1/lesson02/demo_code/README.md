@@ -11,20 +11,47 @@
 ## 前置
 
 - **Python 3.10+**（推荐 3.11+）
-- 模型后端：**OpenAI Key** 或 **本地 Ollama**（二选一，见下方「运行」）
+- **Cursor**（推荐）：用来打开文件夹、运行终端、让 AI 帮你解释报错
+- 模型后端：OpenAI、其他 OpenAI-compatible 服务、本地 Ollama，三选一
 
-## 安装
+## 最快跑起来
 
 ```bash
-pip install -r requirements.txt
+# 1. 进入 demo 目录
+cd unit1/lesson02/demo_code
+
+# 2. 用 Cursor 打开当前目录（如果已经在 Cursor 里，可以跳过）
+cursor .
+
+# 3. 一键安装依赖
+bash setup.sh
+
+# 4. 激活环境，再跑第一个 demo
+source .venv/bin/activate
+python 01_hello_agent.py
 ```
 
-## 运行：二选一
+Windows PowerShell 用这条安装：
 
-**① 零成本 · 本地模型（推荐试验用）**：装 [Ollama](https://ollama.com) 后 `ollama pull qwen2.5:7b`，
-然后直接 `python 01_hello_agent.py` —— 没设 Key 时会**自动用本地模型**跑（断网也行）。
+```powershell
+.\setup.ps1
+.\.venv\Scripts\Activate.ps1
+python 01_hello_agent.py
+```
 
-**② 用 OpenAI（生产级效果）**：
+安装脚本会自动创建 `.venv` 虚拟环境并安装 `requirements.txt`，不用手动找 package。
+
+## 模型怎么选
+
+### 方式 A：OpenAI
+
+最省心的方式：复制 `.env.example` 成 `.env`，然后在 `.env` 里填：
+
+```bash
+OPENAI_API_KEY=sk-...
+```
+
+也可以直接在终端里设置：
 
 ```bash
 # macOS / Linux
@@ -34,14 +61,58 @@ export OPENAI_API_KEY="sk-..."
 setx OPENAI_API_KEY "sk-..."
 ```
 
-> 用环境变量，**别把 Key 写进代码、别提交到 Git**。
+如果想指定模型，可以再加：
+
+```bash
+export OPENAI_MODEL="gpt-your-model-name"
+```
+
+### 方式 B：本地 Ollama（零成本，适合课堂试验）
+
+安装 [Ollama](https://ollama.com)，然后：
+
+```bash
+ollama pull qwen2.5:7b
+python 01_hello_agent.py
+```
+
+没设 `OPENAI_API_KEY` 但 Ollama 正在运行时，demo 会自动走本地模型。弱机可以换小模型：
+
+```bash
+LOCAL_MODEL=qwen2.5:3b python 01_hello_agent.py
+```
+
+### 方式 C：其他 OpenAI-compatible 模型
+
+很多模型服务提供 OpenAI-compatible API。把地址、key、模型名填进去即可：
+
+```bash
+export OPENAI_BASE_URL="https://your-provider.example/v1"
+export OPENAI_API_KEY="your-provider-key"
+export OPENAI_MODEL="your-model-name"
+export OPENAI_API_MODE="chat_completions"
+python 01_hello_agent.py
+```
+
+Windows PowerShell：
+
+```powershell
+setx OPENAI_BASE_URL "https://your-provider.example/v1"
+setx OPENAI_API_KEY "your-provider-key"
+setx OPENAI_MODEL "your-model-name"
+setx OPENAI_API_MODE "chat_completions"
+```
+
+> 用环境变量，**别把 Key 写进代码、别提交到 Git**。可以参考 `.env.example`，但真正的 `.env` 不要上传。
 
 > 没设 Key 也没装 Ollama？直接跑会给你**一句友好提示**，不会再甩一长串报错。
 
 ## 在 Cursor 里怎么跑
 
-1. `File → Open Folder` 打开本文件夹 `demo_code/`
-2. 打开内置终端（`Ctrl+\``），按顺序运行：
+1. `File → Open Folder` 打开 `unit1/lesson02/demo_code/`
+2. 打开内置终端（``Ctrl+` ``）
+3. 第一次运行先执行 `bash setup.sh` 或 `.\setup.ps1`
+4. 按顺序运行：
 
 ```bash
 python 01_hello_agent.py
@@ -53,7 +124,7 @@ python 05_your_assistant.py
 python 06_structured_output.py
 ```
 
-3. **Cursor 小技巧**：`Cmd/Ctrl + K` 让它直接改代码；`Cmd/Ctrl + L` 问它问题；选中报错让它解释。
+5. **Cursor 小技巧**：`Cmd/Ctrl + K` 让它直接改代码；`Cmd/Ctrl + L` 问它问题；选中报错让它解释。
 
 ---
 
@@ -75,8 +146,9 @@ python 06_structured_output.py
 
 | 报错 | 原因 | 解决 |
 |------|------|------|
-| `ModuleNotFoundError: agents` | 没装 / 装错环境 | `pip install -r requirements.txt` |
+| `ModuleNotFoundError: agents` | 没装 / 没激活 `.venv` | 先 `bash setup.sh`，再 `source .venv/bin/activate` |
 | `AuthenticationError` | Key 没设或写错 | 检查 `OPENAI_API_KEY` |
+| PowerShell 不允许激活 `.venv` | Windows 执行策略限制 | 先运行 `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` |
 | `Unable to evaluate type annotation 'float \| None'` | Python 版本太老 | 用 **3.10+** |
 | 连接超时 / 没反应 | 网络或代理 | 确认网络可访问 API |
 

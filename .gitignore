@@ -5,4 +5,7 @@ __pycache__/
 venv/
 .env
 .env.*
+!.env.example
 demo_chat*
+p1_demo*
+*.db

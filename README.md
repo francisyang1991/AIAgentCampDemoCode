@@ -10,12 +10,41 @@
 
 ## 运行第 2 节 demo
 
+推荐学生直接用 Cursor 打开 demo 目录：
+
 ```bash
 cd unit1/lesson02/demo_code
-python -m venv .venv
+cursor .
+```
+
+然后在 Cursor 终端里一键安装依赖：
+
+```bash
+# macOS / Linux
+bash setup.sh
+
+# Windows PowerShell
+.\setup.ps1
+```
+
+安装完成后运行：
+
+```bash
+# macOS / Linux
 source .venv/bin/activate
-pip install -r requirements.txt
 python 01_hello_agent.py
 ```
 
-没有配置 `OPENAI_API_KEY` 时，demo 会尝试使用本机 Ollama 的 `qwen2.5:7b` 模型。
+```powershell
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+python 01_hello_agent.py
+```
+
+模型后端三选一：
+
+- OpenAI：设置 `OPENAI_API_KEY`，也可以复制 `.env.example` 为 `.env` 后填写
+- 本地 Ollama：不设 `OPENAI_API_KEY`，安装 Ollama 后运行 `ollama pull qwen2.5:7b`
+- 其他 OpenAI-compatible 模型：设置 `OPENAI_BASE_URL`、`OPENAI_API_KEY`、`OPENAI_MODEL`，并设置 `OPENAI_API_MODE=chat_completions`
+
+更详细的课堂运行说明在 `unit1/lesson02/demo_code/README.md`。
