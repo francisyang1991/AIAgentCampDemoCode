@@ -1,0 +1,6 @@
+openai-agents>=0.1.0
+python-dotenv>=1.0.0
+# 04b_structured_resume_match.py（结构化输出 / 求职助手旗舰）用到：
+pydantic>=2.0   # Agents SDK 已自带，这里显式声明：结构化返回靠它
+# 05_error_handling.py 进阶的 search_jobs 真 HTTP 工具用到：
+httpx>=0.24     # Agents SDK 已自带，这里显式声明：真去调招聘接口靠它

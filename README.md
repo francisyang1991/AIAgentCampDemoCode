@@ -9,13 +9,15 @@
 - `unit1/lesson02/demo_code/`：Unit 1 第 2 节课堂演示代码
 - `unit1/lesson03/slides.pdf`：Unit 1 第 3 节课件，系统提示词与角色设计
 - `unit1/lesson03/demo_code/`：Unit 1 第 3 节课堂演示代码与 P1 骨架
+- `unit2/lesson04/slides.pdf`：Unit 2 第 4 节课件，Function Calling 与工具设计
+- `unit2/lesson04/demo_code/`：Unit 2 第 4 节课堂演示代码
 
 ## 运行课堂 demo
 
-推荐学生直接用 Cursor 打开对应 demo 目录。下面以第 3 节为例：
+推荐学生直接用 Cursor 打开对应 demo 目录。下面以第 4 节为例：
 
 ```bash
-cd unit1/lesson03/demo_code
+cd unit2/lesson04/demo_code
 cursor .
 ```
 
@@ -29,7 +31,7 @@ bash setup.sh
 
 ```bash
 source .venv/bin/activate
-python 01_same_model_diff_prompt.py
+python 01_function_calling_basics.py
 ```
 
 模型后端三选一：
