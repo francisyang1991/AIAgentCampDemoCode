@@ -11,13 +11,15 @@
 - `unit1/lesson03/demo_code/`：Unit 1 第 3 节课堂演示代码与 P1 骨架
 - `unit2/lesson04/slides.pdf`：Unit 2 第 4 节课件，Function Calling 与工具设计
 - `unit2/lesson04/demo_code/`：Unit 2 第 4 节课堂演示代码
+- `unit2/lesson05/slides.pdf`：Unit 2 第 5 节课件，MCP 协议与 Server 调用
+- `unit2/lesson05/demo_code/`：Unit 2 第 5 节课堂演示代码
 
 ## 运行课堂 demo
 
-推荐学生直接用 Cursor 打开对应 demo 目录。下面以第 4 节为例：
+推荐学生直接用 Cursor 打开对应 demo 目录。下面以第 5 节为例：
 
 ```bash
-cd unit2/lesson04/demo_code
+cd unit2/lesson05/demo_code
 cursor .
 ```
 
@@ -31,7 +33,7 @@ bash setup.sh
 
 ```bash
 source .venv/bin/activate
-python 01_function_calling_basics.py
+python3 run_l5_demo.py
 ```
 
 模型后端三选一：
@@ -40,4 +42,4 @@ python 01_function_calling_basics.py
 - 本地 Ollama：不设 `OPENAI_API_KEY`，安装 Ollama 后运行 `ollama pull qwen2.5:7b`
 - 其他 OpenAI-compatible 模型：设置 `OPENAI_BASE_URL`、`OPENAI_API_KEY`、`OPENAI_MODEL`，并设置 `OPENAI_API_MODE=chat_completions`
 
-更详细的课堂运行说明在对应的 `unit1/lessonXX/demo_code/README.md`。
+更详细的课堂运行说明在对应的 `unitX/lessonXX/demo_code/README.md`。

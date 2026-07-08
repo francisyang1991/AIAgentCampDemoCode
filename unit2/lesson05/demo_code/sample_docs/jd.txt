@@ -1,0 +1,17 @@
+Senior Machine Learning Engineer（高级机器学习工程师）
+
+我们在招一名高级机器学习工程师，加入推荐与搜索团队。
+
+要求：
+- 5 年以上后端或机器学习相关经验
+- 精通 Python，熟悉 PyTorch 或 TensorFlow
+- 有 RAG / 大模型应用落地经验者优先
+- 熟悉 Docker、Kubernetes，有 AWS 或 GCP 云上部署经验
+- 熟悉 SQL 与数据处理（pandas / Spark）
+
+加分项：
+- 有 MLOps、模型监控、A/B 测试经验
+- 参与过 LLM Agent 相关项目
+
+（本文件是 ResuMatch demo 的示例 JD，用来演示 Agent 通过 MCP filesystem
+ 读取真实 JD 文件，再和简历对照，指出匹配点与缺口——绝不替候选人编造经历。）
