@@ -13,13 +13,15 @@
 - `unit2/lesson04/demo_code/`：Unit 2 第 4 节课堂演示代码
 - `unit2/lesson05/slides.pdf`：Unit 2 第 5 节课件，MCP 协议与 Server 调用
 - `unit2/lesson05/demo_code/`：Unit 2 第 5 节课堂演示代码
+- `unit2/lesson06/slides.pdf`：Unit 2 第 6 节课件，多工具协同与错误恢复
+- `unit2/lesson06/demo_code/`：Unit 2 第 6 节课堂演示代码与 P2 模板
 
 ## 运行课堂 demo
 
-推荐学生直接用 Cursor 打开对应 demo 目录。下面以第 5 节为例：
+推荐学生直接用 Cursor 打开对应 demo 目录。下面以第 6 节为例：
 
 ```bash
-cd unit2/lesson05/demo_code
+cd unit2/lesson06/demo_code
 cursor .
 ```
 
@@ -33,7 +35,7 @@ bash setup.sh
 
 ```bash
 source .venv/bin/activate
-python3 run_l5_demo.py
+python3 01_two_local_tools.py
 ```
 
 模型后端三选一：

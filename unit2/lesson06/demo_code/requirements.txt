@@ -1,0 +1,10 @@
+# 第 6 节 · 多工具协同与错误恢复（主线：ResuMatch 求职助手）
+openai-agents>=0.1.0
+python-dotenv>=1.0.0  # 从 .env 读取模型配置
+# 03b_real_api_tool.py（真·外部 API 工具：ResuMatch 旗舰）用到：
+httpx>=0.27       # 调真实 HTTP 招聘搜索接口 HN Algolia（Agents SDK 已自带）
+tenacity>=8.0     # 指数退避重试（只对瞬时网络错误重试）
+pydantic>=2.0     # 结构化返回 JobSearch（Agents SDK 已自带）
+# MCP 文件系统 Server 通过 npx 启动（需 Node ≥ 18），Python 侧依赖随 openai-agents 自带 mcp。
+# 若你的环境 import agents.mcp 报错，单独补装：
+mcp>=1.0.0
