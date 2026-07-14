@@ -1,0 +1,4 @@
+# 第 7 节 · Session 与短期记忆 —— 依赖
+# 本节用的 SQLiteSession / Agent / Runner 都来自 openai-agents 本体，
+# 短期记忆无需额外的第三方库（SQLite 是 Python 标准库自带）。
+openai-agents>=0.17.6
