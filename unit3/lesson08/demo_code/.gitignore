@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 .venv/
 VOYAGE_API_KEY.txt
+GLM_API_KEY.txt
