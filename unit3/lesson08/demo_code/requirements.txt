@@ -1,0 +1,15 @@
+# 第 8 节 · 长期记忆与向量数据库（文档检索 / RAG 地基）—— 依赖
+# 安装：pip install -r requirements.txt
+#
+# 真 embedding（demo 自动挑）：
+#   ① 在仓库根目录 VOYAGE_API_KEY.txt 填一次 Key → 使用 voyage-4-lite
+#   ② 设 OPENAI_API_KEY → 用 OpenAI text-embedding-3-small
+#   ③ 本机装 Ollama 并 `ollama pull nomic-embed-text` → 本地真向量、零成本、可断网
+# 没装 chromadb 时，demo 会自动降级到本地 JSON 向量库（接口一致），照样跑通。
+
+openai-agents>=0.17.6     # Agent / Runner / function_tool / SQLiteSession（05 用）
+openai>=1.40.0            # OpenAI/GLM 兼容路径；Voyage 使用标准库 HTTP，无额外依赖
+chromadb>=0.5.0           # 本地持久化向量库 PersistentClient（缺它则用本地 JSON 兜底）
+
+# 本地 embedding 走 Ollama HTTP 接口（标准库 urllib 调用，无需额外 Python 包）。
+# 装 Ollama：见 https://ollama.com  然后 `ollama pull nomic-embed-text`
