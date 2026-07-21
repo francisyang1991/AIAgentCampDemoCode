@@ -1,0 +1,3 @@
+# Copy this file to VOYAGE_API_KEY.txt, then paste your Voyage API Key below.
+# Do not add quotes, and never commit VOYAGE_API_KEY.txt.
+

@@ -4,16 +4,29 @@
 
 > 建库 → 找候选 → 过滤明确条件 → 拒绝低相关结果 → 两路合并 → 再排一次。
 
+## 首次安装
+
+在仓库根目录执行：
+
+```bash
+cd unit3/lesson08/demo_code
+bash setup.sh
+source .venv/bin/activate
+```
+
+`setup.sh` 会创建独立的 Python 环境并安装 ChromaDB 等依赖。
+
 ## Key 只填一次
 
-打开课程仓库根目录的 `VOYAGE_API_KEY.txt`，把 Voyage API Key 粘贴到注释下面，不要加引号：
+打开当前 `demo_code` 目录中由 `setup.sh` 生成的
+`VOYAGE_API_KEY.txt`，把 Voyage API Key 粘贴到注释下面，不要加引号：
 
 ```text
 # 把 Key 粘贴到下一行（不要加引号）
 你的Voyage_API_Key
 ```
 
-然后直接运行下方任意 Demo。01–06 中所有需要向量的代码都会通过仓库根目录的
+然后直接运行下方任意 Demo。01–06 中所有需要向量的代码都会通过本目录的
 `course_demo_config.py` 自动使用 Voyage `voyage-4-lite`（默认 1024 维），不需要逐个
 文件配置。这个 Key 文件已被 Git 忽略，不会随代码提交；也可以改用环境变量
 `VOYAGE_API_KEY`。
@@ -21,11 +34,39 @@
 不同模型的向量不能混用。公共工具会按“模型 + 维度”自动使用不同的本地向量库目录，
 所以从 Ollama/OpenAI/GLM 切到 Voyage 时会自动建立一份干净索引。
 
+## 每位学生如何建立自己的 Chroma DB
+
+ChromaDB 在本节使用本地 `PersistentClient`，不需要注册账号、连接公共数据库或启动独立服务。
+每位学生在自己的电脑上执行：
+
+```bash
+cd unit3/lesson08/demo_code
+source .venv/bin/activate
+python 02_chroma_quickstart.py
+```
+
+第一次运行会自动：
+
+1. 在 `./chroma_db/` 下按 embedding 模型创建专属子目录。
+2. 创建名为 `jobs` 的 collection。
+3. 把课程示例数据编码成向量并持久化到本机。
+
+再运行一次会复用同一个本地库；相同 id 会 upsert，不会重复累加。
+`chroma_db/` 已被 Git 忽略，不会上传学生的本地数据。
+
+需要从空库重新开始时：
+
+```bash
+rm -rf chroma_db
+python 02_chroma_quickstart.py
+```
+
+不要把不同 embedding 模型产生的向量手动混到同一个 collection 中。本 demo 会按模型自动分目录，
+例如 `chroma_db/voyage-voyage-4-lite-1024d/`。
+
 ## 运行顺序
 
 ```bash
-pip install -r requirements.txt
-
 python 01_embedding_basics.py
 python 02_chroma_quickstart.py
 python 03_metadata_filter.py
